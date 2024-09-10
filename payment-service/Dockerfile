@@ -1,4 +1,7 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY target/payment-service.jar payment-service.jar
-ENTRYPOINT ["java","-jar","/payment-service.jar"]
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY target/*.jar /app/payment-service.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/payment-service.jar"]

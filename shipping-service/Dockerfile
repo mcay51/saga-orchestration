@@ -1,4 +1,7 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY target/shipping-service.jar shipping-service.jar
-ENTRYPOINT ["java","-jar","/shipping-service.jar"]
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY target/*.jar /app/shipping-service.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/shipping-service.jar"]
